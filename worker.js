@@ -13,7 +13,9 @@ self.addEventListener('fetch', function(event) {
   console.log(event.request.url);
   event.respondWith( caches.match(event.request)
     .then(function(response) {
-      return response || fetch(event.request).catch( function(error) { return console.log('hello'); });
+      return response || fetch(event.request).catch( function(error) {
+        return console.log('hello');
+      });
     });
   );
 });
