@@ -16,7 +16,7 @@
   <script type="text/javascript">
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/worker.js').then( function(registration) {
-        console.log('◕‿◕', reg);
+        console.log('◕‿◕', registration);
         var _worker = registration.installing;
         _worker.onstatechange = function() {
           if (newWorker.state == 'activated' && !navigator.serviceWorker.controller) {
