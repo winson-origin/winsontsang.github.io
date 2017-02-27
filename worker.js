@@ -15,5 +15,8 @@ self.addEventListener('fetch', function(event) {
     .then(function(response) {
       return response || fetch(event.request);
     })
+    fetch(event.request.url).catch(error => {
+      return console.log('hello');
+    })
   );
 });
