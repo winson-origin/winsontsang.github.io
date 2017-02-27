@@ -7,4 +7,3 @@ navigator.serviceWorker.register(`/src/worker.js`).then( reg => {
 }, err => {
   console.log('ಠ_ಠ', err);
 });
-å
