@@ -19,7 +19,7 @@
         console.log('◕‿◕', registration);
         var _worker = registration.installing;
         _worker.onstatechange = function() {
-          if (newWorker.state == 'activated' && !navigator.serviceWorker.controller) {
+          if (_worker.state == 'activated' && !navigator.serviceWorker.controller) {
             document.querySelector('#offline').classList.add('active');
           }
         };
