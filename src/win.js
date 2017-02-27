@@ -1,9 +1,11 @@
-const env = {
-  path: 'https://raw.github.com/winsontsang/winsontsang.github.io/master/src'
-}
+'use strict';
 
-navigator.serviceWorker.register(`${path}/src/worker.js`).then( reg => {
+var env = {
+  path: 'https://raw.github.com/winsontsang/winsontsang.github.io/master/src'
+};
+
+navigator.serviceWorker.register(path + '/src/worker.js').then(function (reg) {
   console.log('◕‿◕', reg);
-}, err => {
+}, function (err) {
   console.log('ಠ_ಠ', err);
 });
