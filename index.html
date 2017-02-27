@@ -14,17 +14,25 @@
   <div id="offline" class="active"></div>
   Hello World
   <script type="text/javascript">
+
+    var serviceWorker;
+
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/worker.js').then( function(registration) {
         console.log('◕‿◕', registration);
-        var _worker = registration.installing;
-        _worker.onstatechange = function() {
-          if (_worker.state == 'activated' && !navigator.serviceWorker.controller) {
-            document.querySelector('#offline').classList.add('active');
-          }
-        };
       }, function(err) {
         console.log('ಠ_ಠ', err);
+      });
+    }
+
+    if (registration.installing) {
+      serviceWorker = registration.installing;
+    }
+
+    if (serviceWorker) {
+      logState(serviceWorker.state);
+      serviceWorker.addEventListener('statechange', function(e) {
+      logState(e.target.state);
       });
     }
   </script>
