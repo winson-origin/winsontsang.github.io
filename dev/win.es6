@@ -1,6 +1,8 @@
 const env = {
+  username:'winsontsang',
+  project: 'winsontsang.github.io',
   branch: 'master',
-  path: `https://rawgit.com/winsontsang/winsontsang.github.io/${env.path}/master/`
+  path: `https://rawgit.com//${env.username}/${env.branch}/`
 }
 
 navigator.serviceWorker.register(`${env.path}/src/worker.js`).then( reg => {
