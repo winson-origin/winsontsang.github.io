@@ -1,11 +1,12 @@
 'use strict';
 
 var env = {
-  path: 'https://rawgit.com/winsontsang/winsontsang.github.io/master'
+  /** DEFAULT **/
 };
 
-navigator.serviceWorker.register(env.path + '/src/worker.js').then(function (reg) {
+navigator.serviceWorker.register('/src/worker.js').then(function (reg) {
   console.log('◕‿◕', reg);
 }, function (err) {
   console.log('ಠ_ಠ', err);
 });
+å;
