@@ -5,9 +5,9 @@
 <body>
   Hello, check to see if this is offlined :D
   <script type="text/javascript">
-    navigator.serviceWorker.register('/src/worker.js').then( function(reg) => {
+    navigator.serviceWorker.register('/src/worker.js').then( function(reg) {
       console.log('◕‿◕', reg);
-    }, function(err_ => {
+    }, function(err) {
       console.log('ಠ_ಠ', err);
     });
   </script>
