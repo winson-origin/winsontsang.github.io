@@ -27,13 +27,13 @@
         }
 
         if (serviceWorker) {
-          logState(serviceWorker.state);
-          serviceWorker.addEventListener('statechange', function(e) {
-          logState(e.target.state);
+            console.log(serviceWorker.state);
+            serviceWorker.addEventListener('statechange', function(e) {
+            console.log(e.target.state);
           });
         }
         ///
-        
+
       }, function(err) {
         console.log('ಠ_ಠ', err);
       });
