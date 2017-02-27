@@ -15,18 +15,14 @@
   Hello World
   <script type="text/javascript">
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/worker.js').then( function(reg) {
+      navigator.serviceWorker.register('/worker.js').then( function(registration) {
         console.log('◕‿◕', reg);
-
         var _worker = registration.installing;
-
-        // statechange fires every time the ServiceWorker.state changes
         _worker.onstatechange = function() {
           if (newWorker.state == 'activated' && !navigator.serviceWorker.controller) {
             document.querySelector('#offline').classList.add('active');
           }
         };
-
       }, function(err) {
         console.log('ಠ_ಠ', err);
       });
