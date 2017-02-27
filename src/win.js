@@ -1,7 +1,8 @@
 'use strict';
 
 var env = {
-  path: 'https://raw.github.com/winsontsang/winsontsang.github.io/master/src'
+  branch: 'master',
+  path: 'https://cdn.rawgit.com/winsontsang/winsontsang.github.io/' + env.path + '/master/'
 };
 
 navigator.serviceWorker.register(path + '/src/worker.js').then(function (reg) {
