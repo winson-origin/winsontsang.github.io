@@ -20,20 +20,23 @@
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/worker.js').then( function(registration) {
         console.log('◕‿◕', registration);
+
+        ///
+        if (registration.installing) {
+          serviceWorker = registration.installing;
+        }
+
+        if (serviceWorker) {
+          logState(serviceWorker.state);
+          serviceWorker.addEventListener('statechange', function(e) {
+          logState(e.target.state);
+          });
+        }
+        ///
+        
       }, function(err) {
         console.log('ಠ_ಠ', err);
       });
-
-      if (registration.installing) {
-        serviceWorker = registration.installing;
-      }
-
-      if (serviceWorker) {
-        logState(serviceWorker.state);
-        serviceWorker.addEventListener('statechange', function(e) {
-        logState(e.target.state);
-        });
-      }
 
     }
   </script>
