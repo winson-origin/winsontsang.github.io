@@ -1,8 +1,8 @@
-var hello = hello;
+const hello = hello;
 
-window.addEventListener('install', function(event) {
+window.addEventListener('install', event => {
   event.waitUntil(
-    caches.open('v1').then(function(cache) {
+    caches.open('v1').then( cache => {
       return cache.addAll([
         '/index.html',
       ]);
