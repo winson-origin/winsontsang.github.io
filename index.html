@@ -1,15 +1,36 @@
 <html>
 <head>
   <title>Hello World</title>
+  <style>
+    #offline{
+      display: none;
+    }
+    .active{
+      display: block;
+    }
+  </style>
 </head>
 <body>
-  Hello, check to see if this is offlined :D
+  <div id="offline" class="active"></div>
+  Hello World
   <script type="text/javascript">
-    navigator.serviceWorker.register('/worker.js').then( function(reg) {
-      console.log('◕‿◕', reg);
-    }, function(err) {
-      console.log('ಠ_ಠ', err);
-    });
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/worker.js').then( function(reg) {
+        console.log('◕‿◕', reg);
+
+        var _worker = registration.installing;
+
+        // statechange fires every time the ServiceWorker.state changes
+        _worker.onstatechange = function() {
+          if (newWorker.state == 'activated' && !navigator.serviceWorker.controller) {
+            document.querySelector('#offline').classList.add('active');
+          }
+        };
+
+      }, function(err) {
+        console.log('ಠ_ಠ', err);
+      });
+    }
   </script>
 </body>
 </html>
