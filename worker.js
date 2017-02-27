@@ -9,17 +9,19 @@ this.addEventListener('install', function (event) {
   }));
 });
 
-self.addEventListener('fetch', function(event) {
-  console.log(event.request.url);
-  event.respondWith( caches.match(event.request)
-    .then(function(response) {
-      return response || fetchOffline();
-    })
-  );
+this.addEventListener('fetch', function(event) {
+  if (event.request.mode === 'navigate' || (event.request.method === 'GET' && event.request.headers.get('accept').includes('text/html'))) {
+    event.respondWith(
+      fetch(event.request.url).catch( function(error) {
+          return caches.match(offlineUrl);
+      })
+    );
+  }
+  else{
+    event.respondWith( caches.match(event.request)
+      .then(function (response) {
+          return response || fetch(event.request);
+      })
+    );
+  }
 });
-
-function fetchOffline() {
-  fetch(event.request).catch( function(error) {
-    return console.log('hello');
-  });
-}
